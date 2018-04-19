@@ -12,7 +12,7 @@ tarantoolctl rocks install https://raw.githubusercontent.com/tarantool/cron-pars
 # Example
 
 ````
-local cron = require('cron_parser')
+local cron = require('cron.parser')
 
 local expr, err = cron.parse('0 */15 * * * *')
 if not expr then
