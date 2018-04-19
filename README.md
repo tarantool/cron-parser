@@ -1,4 +1,4 @@
-# Cron Schedule Parsing Lua Wrapper
+# Cron Parser Lua Wrapper
 
 cron_parser is a Lua wrapper of ccronexpr C library. It parses a cron-format schedule and calculates the nearest
 event date.
