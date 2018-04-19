@@ -1,18 +1,27 @@
 package = 'cron-parser'
+
 version = 'scm-1'
+
 source  = {
     url = 'git://github.com/tarantool/cron-parser.git',
-    branch = 'master',
+    branch = 'master'
 }
+
 description = {
-    summary  = 'Tarantool cron expression parser',
+    summary  = 'Cron Parser Lua Wrapper',
+    detailed = [[
+    cron_parser is a Lua wrapper of ccronexpr C library. It parses a
+    cron-format schedule and calculates the nearest event date.
+    ]],
     homepage = 'https://github.com/tarantool/cron-parser',
-    license  = 'Apache',
+    maintainer = 'Michael Siomkin <msiomkin@mail.ru>',
+    license = 'Apache 2.0'
 }
+
 dependencies = {
-    'tarantool',
-    'lua >= 5.1',
+    'lua >= 5.1'
 }
+
 build = {
     type = 'builtin',
     modules = {
@@ -23,4 +32,5 @@ build = {
         ['cron.parser'] = 'cron-parser.lua',
     }
 }
+
 -- vim: syntax=lua
