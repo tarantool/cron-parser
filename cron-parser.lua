@@ -12,7 +12,8 @@ void cron_parse_expr(const char* expression, cron_expr* target, const char** err
 time_t cron_next(cron_expr* expr, time_t date);
 ]]
 
-local cron = ffi.load("ccronexpr.so")
+local ccronexpr = package.search('cron.ccronexpr')
+local cron = ffi.load(ccronexpr)
 
 local parse = function(raw_expr)
     local parsed_expr = ffi.new("cron_expr[1]")

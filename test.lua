@@ -1,6 +1,6 @@
 #!/usr/bin/env tarantool
 
-local cron = require('cron_parser')
+local cron = require('cron.parser')
 
 local expr, err = cron.parse('0 */15 * * * *')
 if not expr then
