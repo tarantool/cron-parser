@@ -3,6 +3,12 @@
 cron_parser is a Lua wrapper of ccronexpr C library. It parses a cron-format schedule and calculates the nearest
 event date.
 
+# Installation
+
+````
+tarantoolctl rocks install https://raw.githubusercontent.com/tarantool/cron-parser/master/cron-parser-scm-1.rockspec
+````
+
 # Example
 
 ````
