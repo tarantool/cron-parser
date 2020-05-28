@@ -1,4 +1,11 @@
 local ffi = require('ffi')
+
+if (ffi.os == "OSX") then
+    ffi.cdef[[
+    typedef long     time_t;
+    ]]
+end
+
 ffi.cdef[[
 typedef struct {
     uint8_t seconds[8];
@@ -12,7 +19,8 @@ void cron_parse_expr(const char* expression, cron_expr* target, const char** err
 time_t cron_next(cron_expr* expr, time_t date);
 ]]
 
-local ccronexpr = package.search('cron.ccronexpr')
+--local ccronexpr = package.search('cron.ccronexpr')
+local ccronexpr = package.searchpath('cron.ccronexpr',package.cpath)
 local cron = ffi.load(ccronexpr)
 
 local function parse(raw_expr)
@@ -56,7 +64,7 @@ local function parse(raw_expr)
     return lua_parsed_expr
 end
 
-local function next(lua_parsed_expr)
+local function next(lua_parsed_expr, base_time)
     local parsed_expr = ffi.new('cron_expr[1]')
 
     for i = 0,7 do
@@ -78,7 +86,9 @@ local function next(lua_parsed_expr)
         parsed_expr[0].months[i] = lua_parsed_expr.months[i + 1]
     end
 
-    local ts = cron.cron_next(parsed_expr, os.time())
+    local v_time = base_time or os.time()
+
+    local ts = cron.cron_next(parsed_expr, v_time)
     return tonumber(ts)
 end
 
