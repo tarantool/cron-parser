@@ -1,12 +1,7 @@
 local ffi = require('ffi')
 
-if (ffi.os == "OSX") then
-    ffi.cdef[[
-    typedef long     time_t;
-    ]]
-end
-
 ffi.cdef[[
+typedef long     time_t;
 typedef struct {
     uint8_t seconds[8];
     uint8_t minutes[8];
