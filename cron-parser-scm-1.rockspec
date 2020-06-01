@@ -28,6 +28,7 @@ build = {
         ['cron.ccronexpr'] = {
             sources = {'ccronexpr/ccronexpr.c'},
             incdirs = {'ccronexpr'},
+            defines = {'CRON_USE_LOCAL_TIME'}
         },
         ['cron.init'] = 'cron-parser.lua',
     }
