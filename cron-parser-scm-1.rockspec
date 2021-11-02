@@ -3,7 +3,7 @@ package = 'cron-parser'
 version = 'scm-1'
 
 source  = {
-    url = 'git://github.com/tarantool/cron-parser.git',
+    url = 'https://github.com/tarantool/cron-parser.git',
     branch = 'master'
 }
 
