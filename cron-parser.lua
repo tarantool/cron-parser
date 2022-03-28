@@ -21,7 +21,7 @@ local function parse(raw_expr)
     local err = ffi.new("const char*[1]")
     cron.cron_parse_expr(raw_expr, parsed_expr, err)
 
-    if err[0] ~= ffi.NULL then
+    if err[0] ~= box.NULL then
         return nil, ffi.string(err[0])
     end
 
