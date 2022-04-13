@@ -56,7 +56,7 @@ local function parse(raw_expr)
     return lua_parsed_expr
 end
 
-local function next(lua_parsed_expr)
+local function next(lua_parsed_expr, from_time)
     local parsed_expr = ffi.new('cron_expr[1]')
 
     for i = 0,7 do
@@ -78,7 +78,11 @@ local function next(lua_parsed_expr)
         parsed_expr[0].months[i] = lua_parsed_expr.months[i + 1]
     end
 
-    local ts = cron.cron_next(parsed_expr, os.time())
+    if from_time == nil then
+        from_time = os.time()
+    end
+
+    local ts = cron.cron_next(parsed_expr, from_time)
     return tonumber(ts)
 end
 
