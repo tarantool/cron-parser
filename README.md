@@ -5,9 +5,9 @@ event date.
 
 # Installation
 
-````
-tarantoolctl rocks install cron-parser
-````
+```
+tt rocks install cron-parser
+```
 
 # Example
 
